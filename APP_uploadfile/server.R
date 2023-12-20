@@ -24,6 +24,7 @@ shinyServer(function(input, output) {
     }        
   })
   
+  #判斷是否有上傳檔案。有的話則
   output$scatterPlot = renderPlot({
     dat = DATA()
     if (is.null(dat)) {return()} else {
@@ -31,5 +32,16 @@ shinyServer(function(input, output) {
     }
   })
   
-  
+  #將圖片儲存進 PDF 檔，當下載完檔案之後，關閉 pdf 檔案
+  output$download = downloadHandler(
+    filename = function() {'plot.pdf'},
+    content = function(con) {
+      dat = DATA()
+      if (is.null(dat)) {return()} else {
+        pdf(con)
+        plot(dat,col=input$Color)
+        dev.off()
+      }
+    }
+  )
 })

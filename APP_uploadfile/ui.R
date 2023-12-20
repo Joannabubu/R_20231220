@@ -1,3 +1,6 @@
+#action button 研究
+
+
 library(shiny)
 
 shinyUI(pageWithSidebar(
@@ -17,7 +20,8 @@ shinyUI(pageWithSidebar(
   mainPanel(
     verbatimTextOutput("summary"),  
     plotOutput("scatterPlot"),
-    tableOutput("view")  
+    tableOutput("view"),
+    downloadButton("download", label = "Download plot", class = NULL)
   )  
   
 ))

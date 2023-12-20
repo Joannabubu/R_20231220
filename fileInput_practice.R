@@ -7,3 +7,5 @@ head(Data, 10)
 summary(Data)
 #看"Data"這個資料表的所有變項的基本資訊
 
+Color = "red"
+plot(Data, col = Color)
